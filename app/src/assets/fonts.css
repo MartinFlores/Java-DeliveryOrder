@@ -1,0 +1,50 @@
+@font-face {
+  font-family: 'Product Sans';
+  src: url('product_sans/pt_100.woff2') format('woff2');
+  font-weight: 100;
+  font-style: normal;
+}
+
+@font-face {
+  font-family: 'Product Sans';
+  src: url('product_sans/pt_300.woff2') format('woff2');
+  font-weight: 300;
+  font-style: normal;
+}
+
+@font-face {
+  font-family: 'Product Sans';
+  src: url('product_sans/pt_400.woff2') format('woff2');
+  font-weight: 400;
+  font-style: normal;
+}
+
+@font-face {
+  font-family: 'Product Sans';
+  src: url('product_sans/pt_500.woff2') format('woff2');
+  font-weight: 500;
+  font-style: normal;
+}
+
+@font-face {
+  font-family: 'Product Sans';
+  src: url('product_sans/pt_700.woff2') format('woff2');
+  font-weight: 700;
+  font-style: normal;
+}
+
+@font-face {
+  font-family: 'Product Sans';
+  src: url('product_sans/pt_900.woff2') format('woff2');
+  font-weight: 900;
+  font-style: normal;
+}
+
+/* Aplicar tipografías globalmente */
+body {
+  font-family: 'Product Sans', sans-serif;
+  background-color: #fdfdfd;
+  overflow: hidden;
+  background: #fdf2f0;
+  user-select: none;
+}
