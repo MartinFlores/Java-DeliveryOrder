@@ -2,8 +2,19 @@
 <html lang="">
   <head>
     <meta charset="UTF-8" />
-    <link rel="icon" href="/favicon.ico" />
-    <title>Vite App</title>
+    <link rel="icon" id="app-icon" href="/assets/icon-192.png" />
+    <link rel="manifest" id="app-manifest" href="/manifest-admin.json" />
+    <title id="app-title">ADMIN</title>
+    <script>
+      (function () {
+        var isCashier = location.search.includes('cashier');
+        if (isCashier) {
+          document.getElementById('app-manifest').href = '/manifest-cashier.json';
+          document.getElementById('app-icon').href = '/assets/icon-cashier-192.png';
+          document.getElementById('app-title').textContent = 'CAJERO';
+        }
+      })();
+    </script>
     <meta
       name="viewport"
       content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no"
@@ -14,7 +25,8 @@
     <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent" />
     <meta name="apple-mobile-web-app-title" content="DeliveryOrder" />
   </head>
-  <body id="app" class="w-screen h-screen overflow-hidden">
+  <body>
+    <div id="app" class="w-screen h-screen overflow-hidden"></div>
     <script type="module" src="/src/main.ts"></script>
   </body>
 </html>

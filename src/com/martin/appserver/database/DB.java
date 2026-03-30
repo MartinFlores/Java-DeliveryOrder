@@ -38,7 +38,6 @@ public class DB {
       appContext = context.getApplicationContext();
       openDatabase();
       createTables();
-      //insertDefaultData();
    }
 
    public static Context getContext() {
@@ -78,22 +77,6 @@ public class DB {
 
    }
 
-   private static void insertDefaultData() {
-      try {
-         String[] var0 = DBSchema.getDefaultDataStatements();
-         int var1 = var0.length;
-
-         for (int var2 = 0; var2 < var1; ++var2) {
-            String sql = var0[var2];
-            database.execSQL(sql);
-         }
-
-         Log.d("DB", "Datos iniciales insertados");
-      } catch (Exception var4) {
-         Log.e("DB", "Error insertando datos iniciales", var4);
-      }
-
-   }
 
    public static SQLiteDatabase getDatabase() {
       if (database == null || !database.isOpen()) {

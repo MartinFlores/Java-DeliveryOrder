@@ -1,0 +1,13 @@
+{
+  "name": "DeliveryOrder - Cajero",
+  "short_name": "CAJERO",
+  "description": "Sistema POS - Cajero",
+  "theme_color": "#22c55e",
+  "background_color": "#ffffff",
+  "display": "standalone",
+  "start_url": "/?cashier",
+  "icons": [
+    { "src": "/assets/icon-cashier-192.png", "sizes": "192x192", "type": "image/png" },
+    { "src": "/assets/icon-cashier.png", "sizes": "512x512", "type": "image/png", "purpose": "any maskable" }
+  ]
+}

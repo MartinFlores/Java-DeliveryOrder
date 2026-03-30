@@ -1,0 +1,13 @@
+{
+  "name": "DeliveryOrder - Admin",
+  "short_name": "ADMIN",
+  "description": "Sistema POS - Administrador",
+  "theme_color": "#22c55e",
+  "background_color": "#ffffff",
+  "display": "standalone",
+  "start_url": "/",
+  "icons": [
+    { "src": "/assets/icon-192.png", "sizes": "192x192", "type": "image/png" },
+    { "src": "/assets/icon.png", "sizes": "512x512", "type": "image/png", "purpose": "any maskable" }
+  ]
+}

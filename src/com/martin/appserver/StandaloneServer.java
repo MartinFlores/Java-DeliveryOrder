@@ -9,13 +9,13 @@ import com.martin.appserver.utils.StandaloneNetworkUtils;
 import com.martin.appserver.database.StandaloneDB;
 
 import java.awt.*;
-import java.awt.event.ActionListener;
 import java.io.File;
 import java.io.IOException;
 import java.net.InetAddress;
 import java.net.ServerSocket;
 import java.net.Socket;
 import java.net.URI;
+import javax.imageio.ImageIO;
 
 public class StandaloneServer {
     private static final int PORT = 7979;
@@ -41,11 +41,11 @@ public class StandaloneServer {
         if (!SystemTray.isSupported()) return;
 
         SystemTray tray = SystemTray.getSystemTray();
-        Image icon = createDefaultIcon();
+        Image icon = loadIcon();
 
         PopupMenu popup = new PopupMenu();
 
-        MenuItem infoItem = new MenuItem("POS Server - " + localIp + ":" + PORT);
+        MenuItem infoItem = new MenuItem("DeliveryOrder - " + localIp + ":" + PORT);
         infoItem.setEnabled(false);
         popup.add(infoItem);
 
@@ -58,6 +58,12 @@ public class StandaloneServer {
         });
         popup.add(openItem);
 
+        MenuItem openDataItem = new MenuItem("Abrir ubicación de la data");
+        openDataItem.addActionListener(e -> {
+            try { Desktop.getDesktop().open(new File(StandaloneDB.getDataDir())); }
+            catch (Exception ex) { ServerLogger.log("Error abriendo carpeta data: " + ex.getMessage()); }
+        });
+        popup.add(openDataItem);
         MenuItem copyItem = new MenuItem("Copiar URL: " + url);
         copyItem.addActionListener(e -> {
             Toolkit.getDefaultToolkit().getSystemClipboard()
@@ -74,31 +80,35 @@ public class StandaloneServer {
         });
         popup.add(exitItem);
 
-        TrayIcon trayIcon = new TrayIcon(icon, "POS Server - " + localIp + ":" + PORT, popup);
+        TrayIcon trayIcon = new TrayIcon(icon, "DeliveryOrder - " + localIp + ":" + PORT, popup);
         trayIcon.setImageAutoSize(true);
-        trayIcon.setToolTip("POS Server corriendo en " + url);
+        trayIcon.setToolTip("DeliveryOrder corriendo en " + url);
 
         try {
             tray.add(trayIcon);
-            trayIcon.displayMessage("POS Server iniciado", "Escuchando en " + url, TrayIcon.MessageType.INFO);
+            trayIcon.displayMessage("DeliveryOrder iniciado", "Escuchando en " + url, TrayIcon.MessageType.INFO);
         } catch (AWTException e) {
             ServerLogger.log("No se pudo agregar tray icon: " + e.getMessage());
         }
     }
 
-    private static Image createDefaultIcon() {
-        // 16x16 green square as fallback icon
-        java.awt.image.BufferedImage img = new java.awt.image.BufferedImage(16, 16, java.awt.image.BufferedImage.TYPE_INT_ARGB);
-        Graphics2D g = img.createGraphics();
-        g.setColor(new Color(34, 197, 94));
-        g.fillOval(0, 0, 16, 16);
-        g.dispose();
-        return img;
+    private static Image loadIcon() {
+        try {
+            return ImageIO.read(new File("icon-server.png"));
+        } catch (IOException e) {
+            java.awt.image.BufferedImage img = new java.awt.image.BufferedImage(16, 16, java.awt.image.BufferedImage.TYPE_INT_ARGB);
+            Graphics2D g = img.createGraphics();
+            g.setColor(new Color(34, 197, 94));
+            g.fillOval(0, 0, 16, 16);
+            g.dispose();
+            return img;
+        }
     }
 
     private static void startServer(String wwwRootPath) {
         try {
             ServerSocket serverSocket = new ServerSocket(PORT, 50, (InetAddress) null);
+            launchAdminApp();
             while (true) {
                 Socket client = serverSocket.accept();
                 new Thread(new ClientHandler(client, new File(wwwRootPath))).start();
@@ -107,6 +117,24 @@ public class StandaloneServer {
             System.err.println("Error: " + e.getMessage());
         } finally {
             StandaloneDB.close();
+        }
+    }
+
+    private static void launchAdminApp() {
+        try {
+            File jarDir = new File(StandaloneServer.class.getProtectionDomain().getCodeSource().getLocation().toURI()).getParentFile();
+            File adminExe = new File(jarDir, "ADMIN.exe");
+            if (!adminExe.exists()) adminExe = new File(jarDir.getParentFile(), "ADMIN.exe");
+            if (adminExe.exists()) {
+                new ProcessBuilder(adminExe.getAbsolutePath())
+                    .directory(adminExe.getParentFile())
+                    .start();
+                ServerLogger.log("ADMIN.exe iniciado desde: " + adminExe.getAbsolutePath());
+            } else {
+                ServerLogger.log("ADMIN.exe no encontrado en: " + jarDir);
+            }
+        } catch (Exception e) {
+            ServerLogger.log("Error iniciando ADMIN.exe: " + e.getMessage());
         }
     }
 }

@@ -26,21 +26,4 @@ public class DBSchema {
             };
       }
 
-      public static String[] getDefaultDataStatements() {
-            long now = System.currentTimeMillis();
-            return new String[] {
-                        "INSERT OR IGNORE INTO company_config (id, company_name, username, pin, primary_color, updated_at) VALUES (1, 'Mi Tienda ERP', 'admin', '1234', '#FF6B35', "
-                                    + now + ")",
-                        "INSERT OR IGNORE INTO users (id, name, whatsapp, password, role, status, created_at) VALUES (1, 'Admin', '1234567890', 'admin', 'admin', 'active', "
-                                    + now + ")",
-                        "INSERT OR IGNORE INTO categories (id, name, icon, created_at) VALUES (1, 'Hamburguesas', '\ud83c\udf54', "
-                                    + now + ")",
-                        "INSERT OR IGNORE INTO categories (id, name, icon, created_at) VALUES (2, 'Pizzas', '\ud83c\udf55', "
-                                    + now + ")",
-                        "INSERT OR IGNORE INTO categories (id, name, icon, created_at) VALUES (3, 'Bebidas', '\ud83e\udd64', "
-                                    + now + ")",
-                        "INSERT OR IGNORE INTO categories (id, name, icon, created_at) VALUES (4, 'Postres', '\ud83c\udf70', "
-                                    + now + ")"
-            };
-      }
 }

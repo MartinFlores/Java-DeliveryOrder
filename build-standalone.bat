@@ -64,6 +64,9 @@ javac -cp "%LIB_DIR%\sqlite-jdbc.jar;%LIB_DIR%\gson-2.8.9.jar;%LIB_DIR%\slf4j-ap
 if errorlevel 1 ( echo ERROR: Compilacion Java fallo & exit /b 1 )
 echo Java compilado OK
 
+:: Copiar icono
+copy "%PROJECT_DIR%\icon-server.png" "%BUILD_DIR%\"
+
 :: Copiar librerías
 echo Copiando librerias...
 copy "%LIB_DIR%\sqlite-jdbc.jar" "%FINAL_LIB_DIR%\"

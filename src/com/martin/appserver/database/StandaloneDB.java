@@ -13,19 +13,30 @@ import java.util.Map;
 
 public class StandaloneDB {
    private static Connection connection;
+   private static String dataDir;
 
    public StandaloneDB() {
+   }
+
+   public static String getDataDir() {
+      return dataDir;
    }
 
    public static void initialize() {
       try {
          Class.forName("org.sqlite.JDBC");
-         connection = DriverManager.getConnection("jdbc:sqlite:appserver.db");
-         System.out.println("✅ Base de datos SQLite inicializada");
-         ServerLogger.log("Base de datos inicializada");
+         String localAppData = System.getenv("LOCALAPPDATA");
+         if (localAppData == null) localAppData = System.getProperty("user.home");
+         dataDir = localAppData + java.io.File.separator + "DeliveryOrder";
+         new java.io.File(dataDir).mkdirs();
+         String dbPath = dataDir + java.io.File.separator + "appserver.db";
+         connection = DriverManager.getConnection("jdbc:sqlite:" + dbPath);
+         System.out.println("\u2705 Base de datos SQLite inicializada en: " + dbPath);
+         ServerLogger.log("Base de datos inicializada en: " + dbPath);
          createTables();
       } catch (Exception var1) {
          System.err.println("Error inicializando DB: " + var1.getMessage());
+         var1.printStackTrace();
       }
 
    }
@@ -41,18 +52,7 @@ public class StandaloneDB {
 
       System.out.println("✅ Tablas creadas");
    }
-
-   private static void insertDefaultData() {
-      String[] var0 = DBSchema.getDefaultDataStatements();
-      int var1 = var0.length;
-
-      for (int var2 = 0; var2 < var1; ++var2) {
-         String sql = var0[var2];
-         execSQL(sql);
-      }
-
-      System.out.println("✅ Datos iniciales insertados");
-   }
+   
 
    public static void execSQL(String sql) {
       try {

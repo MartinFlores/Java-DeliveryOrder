@@ -1,0 +1,85 @@
+ACUERDO DE LICENCIA DE USO DE SOFTWARE (EULA)
+DeliveryOrder
+
+
+1. ACEPTACIÓN DEL ACUERDO
+
+Al instalar, copiar, acceder o utilizar el software DeliveryOrder (en adelante, el “Software”), usted acepta estar legalmente obligado por los términos del presente Acuerdo de Licencia de Usuario Final (EULA).
+
+Si no está de acuerdo con estos términos, no instale ni utilice el Software.
+
+2. LICENCIA DE USO
+
+Se le otorga una licencia limitada, no exclusiva, intransferible y revocable para usar el Software bajo las siguientes condiciones:
+
+- Uso únicamente para fines comerciales o personales legítimos.
+- Instalación en los dispositivos autorizados según su licencia.
+- No se permite sublicenciar, revender o redistribuir el Software sin autorización expresa.
+
+3. RESTRICCIONES
+
+El usuario NO podrá:
+
+- Modificar, descompilar, desensamblar o realizar ingeniería inversa del Software.
+- Copiar o replicar el Software, total o parcialmente, sin autorización.
+- Eliminar avisos de propiedad intelectual.
+- Usar el Software para actividades ilegales o no autorizadas.
+- Intentar acceder a funcionalidades restringidas o al código fuente.
+
+4. PROPIEDAD INTELECTUAL
+
+El Software, incluyendo su código, diseño, estructura, base de datos, interfaz, logotipos y contenido, es propiedad exclusiva de [Nombre de tu empresa o desarrollador] y está protegido por leyes de derechos de autor y propiedad intelectual.
+
+Esta licencia no otorga ningún derecho de propiedad sobre el Software.
+
+5. ACTUALIZACIONES
+
+El Software puede incluir actualizaciones automáticas o manuales que:
+
+- Mejoran funcionalidades
+- Corrigen errores
+- Agregan nuevas características
+
+Estas actualizaciones forman parte del Software y están sujetas a este mismo acuerdo.
+
+6. DATOS Y PRIVACIDAD
+
+El Software puede almacenar datos localmente o procesar información del usuario, incluyendo configuraciones, datos operativos y registros.
+
+El usuario es responsable del uso, resguardo y cumplimiento de las leyes aplicables sobre los datos que gestione mediante el Software.
+
+7. LIMITACIÓN DE RESPONSABILIDAD
+
+El Software se proporciona "TAL CUAL", sin garantías de ningún tipo.
+
+En ningún caso DeliveryOrder será responsable por:
+
+- Pérdida de datos
+- Interrupciones del negocio
+- Daños directos o indirectos
+- Fallos del sistema
+
+El uso del Software es bajo su propio riesgo.
+
+8. TERMINACIÓN
+
+Este acuerdo se terminará automáticamente si el usuario incumple cualquiera de sus términos.
+
+Al terminar:
+
+- Deberá dejar de usar el Software
+- Deberá eliminar todas las copias instaladas
+
+9. SOPORTE
+
+El soporte técnico, en caso de existir, será proporcionado bajo condiciones separadas y no forma parte obligatoria de este acuerdo.
+
+10. LEY APLICABLE
+
+Este acuerdo se regirá por las leyes aplicables en México.
+
+Cualquier disputa será sometida a los tribunales competentes correspondientes.
+
+11. ACEPTACIÓN FINAL
+
+Al instalar o utilizar el Software, usted confirma que ha leído, entendido y aceptado este Acuerdo de Licencia.
